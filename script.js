@@ -1,5 +1,17 @@
-// One source for publication data; the URL selects the display language.
-const language = new URLSearchParams(window.location.search).get("lang") === "ja" ? "ja" : "en";
+// Priority: explicit URL, manual preference, then the browser's primary language.
+const languagePreferenceKey = "homepage-language";
+const urlLanguage = new URLSearchParams(window.location.search).get("lang");
+let savedLanguage = null;
+try {
+  savedLanguage = window.localStorage.getItem(languagePreferenceKey);
+} catch {
+  // The site also works when storage is blocked or opened as a local file.
+}
+const supportedLanguage = (value) => value === "ja" || value === "en";
+const browserLanguage = navigator.languages?.[0] || navigator.language || "en";
+const language = supportedLanguage(urlLanguage) ? urlLanguage
+  : supportedLanguage(savedLanguage) ? savedLanguage
+  : /^ja(?:-|$)/i.test(browserLanguage) ? "ja" : "en";
 const isJapanese = language === "ja";
 document.documentElement.lang = language;
 document.title = isJapanese ? "川原 啓輔 | 東京科学大学" : "Keisuke Kawahara | Institute of Science Tokyo";
@@ -20,6 +32,11 @@ document.querySelectorAll("[data-language]").forEach((link) => {
   else link.removeAttribute("aria-current");
   // Keep the reader at the same section when changing language.
   link.addEventListener("click", () => {
+    try {
+      window.localStorage.setItem(languagePreferenceKey, link.dataset.language);
+    } catch {
+      // URL-based switching still works without persistent storage.
+    }
     link.href = `?lang=${link.dataset.language}${window.location.hash}`;
   });
 });
