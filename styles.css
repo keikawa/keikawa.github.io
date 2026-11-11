@@ -60,12 +60,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .about { display: grid; grid-template-columns: minmax(0, 1fr) 112px; column-gap: 28px; padding: 44px 0 25px; }
 .profile-avatar { grid-column: 2; grid-row: 1 / 3; align-self: center; display: block; width: 112px; height: 112px; padding: 5px; border: 1px solid #d7dfe8; border-radius: 50%; background: #fff; object-fit: contain; box-shadow: 0 2px 7px rgba(36,61,93,.08); }
 .about h1, .about .affiliation { grid-column: 1; }
-.about h1 { margin: 0 0 8px; font-size: clamp(32px, 4.2vw, 40px); font-weight: 300; line-height: 1.2; letter-spacing: .025em; word-spacing: .04em; }
+.about h1 { margin: 0 0 16px; font-size: clamp(32px, 4.2vw, 40px); font-weight: 300; line-height: 1.2; letter-spacing: .025em; word-spacing: .04em; }
 .about h1 strong { font-weight: 700; }
 .about h1 span { margin-left: 8px; font-size: .62em; font-weight: 300; letter-spacing: .08em; white-space: nowrap; }
 .affiliation p, .bio p { margin: 0; }
-.affiliation { font-size: 16px; line-height: 1.45; }
-.affiliation p[lang="ja"] { color: var(--muted); font-size: 15px; }
+.affiliation { font-size: 16px; line-height: 1.6; }
+.affiliation p:first-child { margin-bottom: 6px; }
+.affiliation p[lang="ja"] { margin-top: 4px; color: var(--muted); font-size: 15px; }
 .bio { max-width: 850px; margin-top: 22px; }
 .bio p { font-size: 16px; line-height: 1.55; }
 .bio p[lang="ja"] { margin-top: 3px; color: var(--muted); font-size: 15px; }
@@ -154,6 +155,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .award-dialog form { display: flex; justify-content: flex-end; }
 .dialog-close { padding: 9px 13px; border: 0; background: #fff; color: var(--ink); font: inherit; font-size: 14px; cursor: pointer; }
 .award-dialog img { display: block; max-width: 100%; max-height: calc(92vh - 85px); object-fit: contain; }
+.award-dialog img[hidden], .dialog-status[hidden] { display: none; }
+.dialog-status { margin: 0; padding: 40px 24px; min-width: min(320px, 85vw); color: var(--muted); font-size: 14px; text-align: center; }
 .dialog-caption { display: flex; flex-wrap: wrap; gap: 4px 13px; margin: 0; padding: 11px 15px 13px; border-top: 1px solid var(--line); font-size: 13px; }
 .dialog-caption span { color: var(--muted); }
 

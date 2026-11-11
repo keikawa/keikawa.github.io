@@ -130,19 +130,45 @@ window.addEventListener("load", () => {
 });
 
 const dialog = document.querySelector("#award-dialog");
-const dialogImage = document.querySelector("#award-dialog-image");
+let dialogImage = document.querySelector("#award-dialog-image");
+const dialogStatus = document.querySelector("#award-dialog-status");
 const dialogTitle = document.querySelector("#award-dialog-title");
 const dialogYear = document.querySelector("#award-dialog-year");
+let awardRequest = 0;
 
 document.querySelectorAll(".award-link").forEach((button) => {
-  button.addEventListener("click", () => {
-    dialogImage.src = button.dataset.image;
+  button.addEventListener("click", async () => {
+    const request = ++awardRequest;
     const title = isJapanese ? button.dataset.titleJa : button.dataset.title;
-    dialogImage.alt = isJapanese ? `${title}の賞状` : `${title} certificate`;
+    // A fresh hidden element cannot paint the previous certificate while loading.
+    const image = document.createElement("img");
+    image.id = "award-dialog-image";
+    image.hidden = true;
+    image.alt = isJapanese ? `${title}の賞状` : `${title} certificate`;
+    image.src = button.dataset.image;
+    dialogImage.replaceWith(image);
+    dialogImage = image;
+    dialogStatus.textContent = isJapanese ? "読み込み中…" : "Loading…";
+    dialogStatus.hidden = false;
     dialogTitle.textContent = title;
     dialogYear.textContent = button.dataset.year;
-    dialog.showModal();
+    if (!dialog.open) dialog.showModal();
+    try {
+      await image.decode();
+      if (request !== awardRequest || !dialog.open) return;
+      image.hidden = false;
+      dialogStatus.hidden = true;
+    } catch {
+      if (request !== awardRequest || !dialog.open) return;
+      dialogStatus.textContent = isJapanese ? "画像を読み込めませんでした。閉じて、もう一度お試しください。" : "The image could not be loaded. Please close and try again.";
+    }
   });
+});
+
+dialog?.addEventListener("close", () => {
+  ++awardRequest;
+  dialogImage.hidden = true;
+  dialogStatus.hidden = true;
 });
 
 dialog?.addEventListener("click", (event) => {
