@@ -142,7 +142,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .award-link, .press-link { display: inline; margin: 0; padding: 0; border: 0; border-bottom: 1px dotted color-mix(in srgb, currentColor 42%, transparent); color: inherit; background: transparent; font: inherit; cursor: pointer; }
 .award-link:hover, .press-link:hover { color: var(--accent); border-bottom-color: currentColor; }
 .award-icon, .press-icon { display: inline-block; width: 14px; height: 14px; margin-right: 5px; vertical-align: -3px; fill: currentColor; }
-.press-link { white-space: nowrap; }
+.research-press { word-spacing: 6px; }
+.press-link { white-space: nowrap; word-spacing: normal; }
+.press-icon { margin-right: 2px; }
 .all-research { margin: 38px 0 0; color: var(--muted); font-size: 15px; }
 .all-research a { border-bottom: 1px solid currentColor; }
 .site-footer { margin-top: 24px; }
