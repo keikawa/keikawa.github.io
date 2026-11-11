@@ -14,7 +14,8 @@ const language = supportedLanguage(urlLanguage) ? urlLanguage
   : /^ja(?:-|$)/i.test(browserLanguage) ? "ja" : "en";
 const isJapanese = language === "ja";
 document.documentElement.lang = language;
-document.title = isJapanese ? "川原 啓輔 | 東京科学大学" : "Keisuke Kawahara | Institute of Science Tokyo";
+const siteTitle = "Keisuke Kawahara | 川原 啓輔";
+document.title = siteTitle;
 document.querySelectorAll("[data-en][data-ja]").forEach((element) => {
   element.textContent = element.dataset[language];
 });
@@ -68,7 +69,7 @@ const description = document.querySelector(".topic-detail-summary")?.textContent
   : "Keisuke Kawahara is an Assistant Professor at the Institute of Science Tokyo. His research interests include electronic and photonic integrated circuits.");
 document.querySelector('meta[name="description"]').content = description;
 document.querySelector('meta[property="og:description"]').content = description;
-document.querySelector('meta[property="og:title"]').content = topicHeading?.textContent || (isJapanese ? "川原 啓輔" : "Keisuke Kawahara");
+document.querySelector('meta[property="og:title"]').content = topicHeading?.textContent || siteTitle;
 document.querySelector(".site-nav").setAttribute("aria-label", isJapanese ? "メインナビゲーション" : "Primary navigation");
 document.querySelector(".language-switch").setAttribute("aria-label", isJapanese ? "表示言語" : "Language");
 document.querySelectorAll('[aria-label="External profiles"]').forEach((element) => {
