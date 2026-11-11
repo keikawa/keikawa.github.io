@@ -40,7 +40,7 @@ document.querySelectorAll("[data-language]").forEach((link) => {
     link.href = `?lang=${link.dataset.language}${window.location.hash}`;
   });
 });
-document.querySelectorAll(".conference-links > span").forEach((label) => {
+document.querySelectorAll(".conference-label").forEach((label) => {
   label.textContent = isJapanese ? "関連発表：" : "Related presentation:";
 });
 document.querySelectorAll(".award-link").forEach((button) => {
