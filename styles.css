@@ -67,6 +67,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .affiliation { font-size: 16px; line-height: 1.45; }
 .affiliation p:first-child { margin-bottom: 3px; }
 .affiliation p[lang="ja"] { color: var(--muted); font-size: 15px; }
+.cv-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 8px; padding-block: 2px; font-size: 15px; font-weight: 400; line-height: 1.5; }
+.cv-link svg { flex: 0 0 18px; width: 18px; height: 18px; }
+.cv-link:hover > span { text-decoration: underline; text-underline-offset: 3px; }
 .bio { max-width: 850px; margin-top: 22px; }
 .bio p { font-size: 16px; line-height: 1.55; }
 .bio p[lang="ja"] { margin-top: 3px; color: var(--muted); font-size: 15px; }
