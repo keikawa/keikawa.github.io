@@ -1,5 +1,5 @@
 :root {
-  --paper: #fff;
+  --paper: #fefefd;
   --ink: #202020;
   --muted: #444947;
   --quiet: #646a68;
@@ -23,9 +23,9 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-/* Background A: continuous contours confined to the outer whitespace. */
+/* Plain near-white background; retain the contour assets for future reuse. */
 body::before {
-  content: "";
+  content: none;
   position: absolute;
   inset: 0 0 auto;
   height: max(1300px, 90.277778vw);
