@@ -114,6 +114,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .topic-gallery-image img { display: block; width: 100%; height: auto; }
 .topic-gallery figcaption { margin-top: 8px; font-size: 14px; text-align: center; }
 .topic-gallery figcaption a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+.caption-term { white-space: nowrap; }
 @media (max-width: 600px) {
   .topic-gallery { grid-template-columns: 1fr; gap: 24px; }
 }
