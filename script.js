@@ -23,6 +23,10 @@ document.querySelectorAll("[data-alt-en][data-alt-ja]").forEach((image) => {
   image.alt = isJapanese ? image.dataset.altJa : image.dataset.altEn;
 });
 
+document.querySelectorAll("a[data-href-en][data-href-ja]").forEach((link) => {
+  link.href = isJapanese ? link.dataset.hrefJa : link.dataset.hrefEn;
+});
+
 document.querySelectorAll("[data-keep-language]").forEach((link) => {
   const url = new URL(link.getAttribute("href"), window.location.href);
   url.searchParams.set("lang", language);
